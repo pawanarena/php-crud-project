@@ -9,11 +9,9 @@ use App\Validation\UserValidation;
 
 class UserController
 {
-    private $db;
     private $userRepository;
-    public function __construct(DatabaseService $db,UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository)
     {
-        $this->db = $db;
         $this->userRepository = $userRepository;
     }
     public function listUsers($currentPage = 1, $perPage = 10)
