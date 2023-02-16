@@ -33,9 +33,39 @@ class UserRepository
         return $users;
     }
 
-    public function addUser($name,$email){
+    public function addUser($name,$email)
+    {
         $stmt = $this->db->executeQuery('INSERT INTO users (name, email) VALUES (?, ?)', [$name, $email]);
         $id = $this->db->getLastInsertId();
+        header('Location: /');
+        exit;
+    }
+
+    public function getUserByID()
+    {
+        $uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $uri_segments = explode('/', $uri_path);
+        $id = $uri_segments[2];
+        $stmt = $this->db->executeQuery('SELECT * FROM users WHERE id = ?', [$id]);
+        $row = $stmt->fetch();
+        $user = new User($row['id'], $row['name'], $row['email']);
+        return $user;
+    }
+
+    public function updateUser()
+    {
+        $id = $_POST['id'];
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $stmt = $this->db->executeQuery('UPDATE users SET name = ?, email = ? WHERE id = ?', [$name, $email, $id]);
+        header('Location: /');
+        exit;
+    }
+
+    public function deleteUser()
+    {
+        $id = $_POST['id'];
+        $stmt = $this->db->executeQuery('DELETE FROM users WHERE id = ?', [$id]);
         header('Location: /');
         exit;
     }

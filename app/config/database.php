@@ -2,7 +2,7 @@
 use App\Services\DatabaseService;
 
 $host = 'localhost';
-$db   = 'pollution_measurement';
+$db   = 'testDB';
 $user = 'root';
 $pass = 'root';
 $port = "3306";
