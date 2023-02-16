@@ -42,9 +42,12 @@ class UserController
     public function editUser()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'];
+            $name = $_POST['name'];
+            $email = $_POST['email'];
             $nameError = UserValidation::validateName($name);
             $emailError = UserValidation::validateEmail($email);
-            $this->userRepository->updateUser();
+            $this->userRepository->updateUser($id,$name,$email);
         } else {
             $user=$this->userRepository->getUserByID();
             include(__DIR__ . '/../Views/edit_user.php');

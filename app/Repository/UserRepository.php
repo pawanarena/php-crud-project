@@ -52,11 +52,8 @@ class UserRepository
         return $user;
     }
 
-    public function updateUser()
+    public function updateUser($id,$name,$email)
     {
-        $id = $_POST['id'];
-        $name = $_POST['name'];
-        $email = $_POST['email'];
         $stmt = $this->db->executeQuery('UPDATE users SET name = ?, email = ? WHERE id = ?', [$name, $email, $id]);
         header('Location: /');
         exit;
