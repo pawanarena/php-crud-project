@@ -5,7 +5,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 use App\Controllers\UserController;
 use App\Repository\UserRepository;
 
-require_once __DIR__ . '/app/config/database.php';
+require_once __DIR__ . '/app/Config/database.php';
 
 $uri = $_SERVER['REQUEST_URI'];
 
