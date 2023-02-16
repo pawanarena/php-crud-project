@@ -1,0 +1,10 @@
+{
+    "name": "project/user",
+    "description": "A small project to add, edit and delete users to a database.",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
